@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Valentine ❤️</title>
+
+<style>
+
+body{
+    background: linear-gradient(to bottom right, #ffd6e7, white);
+    font-family: Comic Sans MS;
+    text-align:center;
+    overflow:hidden;
+}
+
+h1{
+    color:#ff2d75;
+    font-size:40px;
+}
+
+#bunny{
+    width:250px;
+    margin-top:30px;
+}
+
+.button{
+    padding:20px 40px;
+    font-size:22px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    margin:20px;
+}
+
+#yesBtn{
+    background: #ff5fa2;
+    color:white;
+    font-weight:bold;
+}
+
+#noBtn{
+    background: red;
+    color:white;
+    position:absolute;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 id="question">Will you be my Valentine?</h1>
+
+<img id="bunny" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+
+<br>
+
+<button id="yesBtn" class="button">YES</button>
+<button id="noBtn" class="button">NO</button>
+
+<script>
+
+let noCount = 0;
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const bunny = document.getElementById("bunny");
+const question = document.getElementById("question");
+
+noBtn.addEventListener("click", function(){
+
+noCount++;
+
+if(noCount==1){
+    bunny.src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif";
+    question.innerHTML="Are you sure?";
+    yesBtn.style.transform="scale(1.3)";
+}
+
+else if(noCount==2){
+    bunny.src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif";
+    question.innerHTML="Goley really?";
+    yesBtn.style.transform="scale(1.6)";
+}
+
+else{
+    moveButton();
+    yesBtn.style.transform="scale(2)";
+}
+
+});
+
+function moveButton(){
+    let x = Math.random()*(window.innerWidth-100);
+    let y = Math.random()*(window.innerHeight-100);
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+}
+
+yesBtn.addEventListener("click", function(){
+
+    bunny.src="https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif";
+    question.innerHTML="I LOVE YOU ❤️";
+
+    yesBtn.style.display="none";
+    noBtn.style.display="none";
+
+    setTimeout(function(){
+        location.reload();
+    },5000);
+
+});
+
+</script>
+
+</body>
+</html>
